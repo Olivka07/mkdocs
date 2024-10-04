@@ -14,21 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Python Setup
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
 
       - name: MkDocs Setup
-      run: pip install mkdocs
+        run: pip install mkdocs
 
       - name: Build
-      run: mkdocs build
+        run: mkdocs build
 
       - name: Upload artifact
-      uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v4
         with: 'site/'
+        
       - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4
