@@ -2,6 +2,8 @@ name: Build and Deploy of Static Site
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   build:
