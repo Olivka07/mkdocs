@@ -1,0 +1,34 @@
+name: Build and Deploy of Static Site
+
+on:
+  push:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+      steps:
+        - name: Checkout
+        uses: actions/checkout@v3
+
+        - name: Python Setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+        - name: MkDocs Setup
+        run: pip install mkdocs
+
+        - name: Build
+        run: mkdocs build
+
+        - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+          with: 'site/'
+        - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
