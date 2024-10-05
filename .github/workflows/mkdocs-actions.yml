@@ -4,14 +4,32 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write      # to deploy to Pages
+  id-token: write   # to verify the deployment originates from an appropriate source
 
 jobs:
-  build:
-    name: Build
+  webpack-build:
+    name: Build by Webpack
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Installing Dependencies
+        run: npm ci
+      - name: Build Webpack
+        run: npm run build
+  build:
+    name: Build Mkdocs
     
     runs-on: ubuntu-latest
     steps:
