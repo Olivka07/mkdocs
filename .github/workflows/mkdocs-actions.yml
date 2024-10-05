@@ -12,8 +12,9 @@ permissions:
   id-token: write   # to verify the deployment originates from an appropriate source
 
 jobs:
-  webpack-build:
-    name: Build by Webpack
+  build:
+    name: Build Mkdocs
+    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,17 +25,12 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+          
       - name: Installing Dependencies
         run: npm ci
+
       - name: Build Webpack
         run: npm run build
-  build:
-    name: Build Mkdocs
-    
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
       - name: Python Setup
         uses: actions/setup-python@v4
