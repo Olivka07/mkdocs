@@ -1,0 +1,21 @@
+.page {
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        text-align: center;
+        padding: 20px;
+    }
+    &__content {
+        width: 100%;
+        display: flex;
+        column-gap: 20px;
+    }
+
+    &__svgContainer {
+        width: 100px;
+    }
+}

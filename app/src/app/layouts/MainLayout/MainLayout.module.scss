@@ -1,0 +1,13 @@
+.layout {
+    &__container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        overflow: hidden;
+
+        background-color: var(--background-color);
+    }
+}

@@ -1,0 +1,1 @@
+export { Hobby } from './Hobby';
