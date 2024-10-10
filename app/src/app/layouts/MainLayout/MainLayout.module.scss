@@ -5,9 +5,16 @@
         position: relative;
         top: 0;
         left: 0;
-        padding: 20px;
         overflow: hidden;
 
+        display: flex;
+        flex-direction: column;
         background-color: var(--background-color);
+
+        .main__container {
+            flex: 1 1 auto;
+        }
     }
+
+    
 }
